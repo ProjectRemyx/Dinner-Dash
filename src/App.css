@@ -16,6 +16,7 @@ body{
   background-repeat: no-repeat;
   background-position: center; 
   background-size: cover;
+  margin-bottom: 1em;
 }
 
 .header-container{
@@ -30,8 +31,13 @@ body{
   width: 50%;
 }
 
+.header-heading{
+  text-align: center;
+  font-size: 4em;
+  color: white; 
+}
+
 .header-text{
   text-align: center;
   color: white;
-  margin-bottom: 1em;
 }

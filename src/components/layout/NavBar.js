@@ -43,7 +43,7 @@ export default class NavExample extends React.Component {
   render() {
     return (
         <Navbar type="light" theme="white" expand="md">
-          <NavbarBrand href=".">Restaurant Advisor</NavbarBrand>
+          <NavbarBrand href=".">Dinner Dash</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} />
           <Collapse open={this.state.collapseOpen} navbar>
             <Nav navbar>
