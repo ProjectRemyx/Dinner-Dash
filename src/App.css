@@ -15,13 +15,18 @@ body{
   width: 100vw;
 }
 
+.navbar-brand{
+  font-family: 'Luckiest Guy', cursive;
+}
+
 /* Header CSS */
 .header-background{
   background-image: url('./imgs/headerbg.jpeg');
   background-repeat: no-repeat;
   background-position: center; 
   background-size: cover;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
+  border: 1px solid black;
 }
 
 .header-container{
@@ -32,13 +37,20 @@ body{
 }
 
 .header-body-container{
-  padding: 8em 0 8em 0;
-  width: 50%;
+  padding: 8rem 0 8rem 0;
+  width: 100%;
 }
 
 .header-heading{
+  font-family: 'Luckiest Guy', cursive;
   text-align: center;
-  font-size: 4em;
+  font-size: 4rem;
+  color: white; 
+}
+
+.header-subheading{
+  text-align: center;
+  font-size: 1.5rem;
   color: white; 
 }
 
@@ -56,9 +68,76 @@ body{
 
 .card-title{
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .results{
-  margin: 2em 0 1em 0;
+  margin: 2rem 0 1rem 0;
+}
+
+.icon{
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 992px){
+  .card-title{ 
+    font-size: 1rem;
+  }
+
+  .icon{
+    margin-right: 0.1rem;
+  }
+  
+  .btn.btn-block{
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .card-img-top{
+    max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 681px){
+  .header-heading{
+    font-size: 3em;
+  }
+
+  .display-4{
+    font-size: 2.5rem !important;
+  }
+}
+
+@media screen and (max-width: 511px){
+  .header-heading{
+    font-size: 2rem;
+  }
+
+  .header-subheading{
+    font-size: 1.2rem;
+  }
+
+  .display-4{
+    font-size: 2rem !important;
+  }
+
+  .results{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 345px){
+  .display-4{
+    font-size: 1.75rem  !important;
+  }
+
+  .results{
+    font-size: 1.25rem;
+  }
+
+  .lead{
+    font-size: 1rem !important;
+  }
+
 }
