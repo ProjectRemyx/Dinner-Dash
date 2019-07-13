@@ -45,21 +45,11 @@ export default class NavExample extends React.Component {
         <Navbar type="light" theme="white" expand="md">
           <NavbarBrand href=".">Dinner Dash</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} />
-          <Collapse open={this.state.collapseOpen} navbar>
+          <Collapse open={this.state.collapseOpen} navbar className="justify-content-end">
             <Nav navbar>
               <NavItem>
-                <NavLink>
-                  Link
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  Link
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  Link
+                <NavLink href="mailto: jingkcheng@hotmail.com">
+                  Contact
                 </NavLink>
               </NavItem>
             </Nav>

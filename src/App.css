@@ -53,3 +53,12 @@ body{
   min-height: 150px;
   object-fit: cover;
 }
+
+.card-title{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.results{
+  margin: 2em 0 1em 0;
+}
