@@ -3,6 +3,10 @@
   left: -999em;
 }
 
+i{
+  width: 16px;
+}
+
 body{
   font-family: 'Raleway', sans-serif;
 }
@@ -11,6 +15,7 @@ body{
   width: 100vw;
 }
 
+/* Header CSS */
 .header-background{
   background-image: url('./imgs/headerbg.jpeg');
   background-repeat: no-repeat;
@@ -40,4 +45,11 @@ body{
 .header-text{
   text-align: center;
   color: white;
+}
+
+/* Index CSS */
+.card-img-top{
+  max-height: 200px;
+  min-height: 150px;
+  object-fit: cover;
 }

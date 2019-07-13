@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/layout/NavBar';
 import Header from './components/layout/Header';
 import Index from './components/layout/Index';
+import FooterBar from './components/layout/FooterBar';
 
 import { Provider } from './context';
 
@@ -22,6 +23,7 @@ class App extends Component {
                 <Route exact path="/" component={Index}/>
               </Switch>
             </div>
+            <FooterBar/>
           </React.Fragment>
         </Router>
       </Provider>

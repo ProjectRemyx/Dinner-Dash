@@ -8,7 +8,6 @@ export default class HeaderIntro extends Component{
                 <div className="header-container">
                     <div className="header-body-container">
                         <h1 className="header-heading">Dinner Dash</h1>
-                        <h3 className="header-text">Restaurant Finder</h3>
                     </div>
                 </div>
             </div>
