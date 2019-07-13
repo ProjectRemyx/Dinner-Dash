@@ -18,11 +18,13 @@ class App extends Component {
           <React.Fragment>
             <NavBar/>
             <Header/>
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={Index}/>
-              </Switch>
-            </div>
+            <main>
+              <div className="container">
+                <Switch>
+                  <Route exact path="/" component={Index}/>
+                </Switch>
+              </div>
+            </main>
             <FooterBar/>
           </React.Fragment>
         </Router>

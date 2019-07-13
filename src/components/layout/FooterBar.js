@@ -16,7 +16,7 @@ const FooterPage = () => {
             </p>
           </MDBCol>
           <MDBCol md="6">
-            <h5 className="title">Other Projects:</h5>
+            <h6 className="title">Other Projects:</h6>
             <ul>
               <li className="list-unstyled">
                 <a href="http://tridentgaming.org">Trident</a>

@@ -4,7 +4,8 @@ import { Consumer } from '../../context';
 
 class Search extends Component {
     state = {
-        restaurantLocation: ''
+        restaurantLocation: '',
+        error:''
     }
 
     onChange = (e) => {
@@ -13,18 +14,37 @@ class Search extends Component {
 
     findRestaurants = (dispatch, e) => {
         e.preventDefault();
-
-        axios.get(`http://opentable.herokuapp.com/api/restaurants?city=${this.state.restaurantLocation}`)
-            .then(res => {
-                dispatch({
-                    type: 'SEARCH_RESTAURANTS',
-                    payload: res.data.restaurants
-                });
-
-                this.setState({ restaurantLocation: '' });
-            })
-            .catch(err => console.log(err));
+        const isValid = this.validate();
+        if(isValid)
+        {
+            axios.get(`http://opentable.herokuapp.com/api/restaurants?city=${this.state.restaurantLocation}`)
+                .then(res => {
+                    dispatch({
+                        type: 'SEARCH_RESTAURANTS',
+                        payload: res.data.restaurants
+                    });
+    
+                    this.setState({ restaurantLocation: '', error: '' });
+                })
+                .catch(err => console.log(err));
+        }
     }
+
+    validate = () => {
+        let error = '';
+
+        if(!this.state.restaurantLocation)
+        {
+            error = "Location cannot be blank";
+        }
+
+        if(error){
+            this.setState({ error });
+            return false;
+        }
+
+        return true;
+    };
     
     render() {
         return (
@@ -33,7 +53,7 @@ class Search extends Component {
                     const { dispatch } = value;
                     return (
                         <div className="card card-body mb-4 p-4">
-                            <h2 className="display-4 text-center">Restaurant Search</h2>
+                            <h3 className="display-4 text-center">Restaurant Search</h3>
                             <p className="lead text-center">Search for restaurants by city</p>
                             <form onSubmit={this.findRestaurants.bind(this, dispatch)}>
                                 <div className="form-group">
@@ -52,6 +72,7 @@ class Search extends Component {
                                     Get Restaurants
                                 </button>
                             </form>
+                            <p style={{ color: "red" }}> {this.state.error} </p>
                         </div>
                     );
                 }}

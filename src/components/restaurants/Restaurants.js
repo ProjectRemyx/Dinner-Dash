@@ -15,7 +15,7 @@ class Restaurants extends Component {
                     else{
                         return (
                             <React.Fragment>
-                            <h2 className="text-center results">{ heading }</h2>
+                            <h4 className="text-center results">{ heading }</h4>
                             <div className="row">
                                 { restaurant_list.map(item => (
                                     <Restaurant key={item.id} restaurant={item}/>
