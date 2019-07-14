@@ -5,6 +5,7 @@ import NavBar from './components/layout/NavBar';
 import Header from './components/layout/Header';
 import Index from './components/layout/Index';
 import FooterBar from './components/layout/FooterBar';
+import ScrollUpButton from 'react-scroll-up-button';
 
 import { ContextController } from './context';
 
@@ -26,6 +27,7 @@ class App extends Component {
               </div>
             </main>
             <FooterBar/>
+            <ScrollUpButton/>
           </React.Fragment>
         </Router>
       </ContextController>
