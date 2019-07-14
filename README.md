@@ -1,7 +1,9 @@
 # Dinner-Dash
 An application that uses Open Table API to get a list of restaurants.
 
-http://opentable.herokuapp.com/
+Currently hosted on: https://app-dinner-dash.herokuapp.com
+
+API: http://opentable.herokuapp.com/
 
 ## Quick Start
 
