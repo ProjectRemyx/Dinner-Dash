@@ -12,26 +12,28 @@ If I had more time I would implement Redux, get authorization for the real versi
 
 The newest useful feature that was added to the latest version of React is hooks. Hooks allow the use of state and other React features without the need to write a class. In the code snippet below, useState is a hook, and so is useEffect. 
 
->   const[state, setState] = useContext(Context);
->   const [userInput, setUserInput] = useState("");
->   const [restaurantLocation, setRestaurantLocation] = useState("");
+```javascript
+   const[state, setState] = useContext(Context);
+   const [userInput, setUserInput] = useState("");
+   const [restaurantLocation, setRestaurantLocation] = useState("");
     
->   useEffect(() => {
->       if(restaurantLocation === "")
->       {
->           console.log("Restaurant location cannot be blank");
->       }
->       else
->       {
->           axios
->           .get(`https://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
->               .then(res => {
->                   let restaurant_list = res.data.restaurants;
->                   setState({ restaurant_list: restaurant_list, heading: "Search Results" });
->               })    
->               .catch(err => console.log(err));
->       }
->   }, [restaurantLocation]);
+   useEffect(() => {
+       if(restaurantLocation === "")
+       {
+           console.log("Restaurant location cannot be blank");
+       }
+       else
+       {
+           axios
+           .get(`https://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
+               .then(res => {
+                   let restaurant_list = res.data.restaurants;
+                   setState({ restaurant_list: restaurant_list, heading: "Search Results" });
+               })    
+               .catch(err => console.log(err));
+       }
+   }, [restaurantLocation]);
+```
 
 ## How would you track down a performance issue in production? Have you ever had to do this?
 
