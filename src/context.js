@@ -1,44 +1,46 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-const Context = React.createContext();
+export const Context = React.createContext();
 
-const reducer = (state, action) => {
-    switch(action.type){
-        case 'SEARCH_RESTAURANTS':
-        return{
-            ...state,
-            restaurant_list: action.payload,
-            heading: 'Search Results'
-        };
-        default:
-            return state;
-    }
-}
+// const reducer = (state, action) => {
+//     switch(action.type){
+//         case 'SEARCH_RESTAURANTS':
+//         return{
+//             ...state,
+//             restaurant_list: action.payload,
+//             heading: 'Search Results'
+//         };
+//         default:
+//             return state;
+//     }
+// };
 
-export class Provider extends Component {
-    state = {
+export function ContextController({ children }) {
+    let initialState = {
         restaurant_list: [],
-        heading: 'Featured Toronto Restaurants',
-        dispatch: action => this.setState(state => reducer(state, action))
+        heading: '',
+        // dispatch: action => this.setState(state => reducer(state, action))
     };
 
-    componentDidMount(){
-        axios.get(`http://opentable.herokuapp.com/api/restaurants?city=toronto`)
+    const [state, setState] = useState(initialState);
+
+    useEffect(() => {
+        axios
+        .get(
+            `http://opentable.herokuapp.com/api/restaurants?city=toronto`)
             .then(res => {
-                this.setState({restaurant_list: res.data.restaurants});
+                setState({
+                    restaurant_list: res.data.restaurants, 
+                    heading: "Featured Toronto Restaurants" 
+                });
             })
             .catch(err => console.log(err));
-    }
+    }, []);
 
-    render() {
-        return (
-            <Context.Provider value={this.state}>
-                {this.props.children}
-            </Context.Provider>
-        );
-    }
+    return (
+        <Context.Provider value={[state, setState]}>{children}</Context.Provider>
+    );
 }
 
-export const Consumer = Context.Consumer;
 

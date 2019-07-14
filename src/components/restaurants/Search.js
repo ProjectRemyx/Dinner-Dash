@@ -1,86 +1,56 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Consumer } from '../../context';
+import { Context} from '../../context';
 
-class Search extends Component {
-    state = {
-        restaurantLocation: '',
-        error:''
-    }
+const Search = () => {
+    const[state, setState] = useContext(Context);
+    const [userInput, setUserInput] = useState("");
+    const [restaurantLocation, setRestaurantLocation] = useState("");
 
-    onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+    useEffect(() => {
+        axios
+        .get(`http://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
+            .then(res => {
+                let restaurant_list = res.data.restaurants;
+                setState({ restaurant_list: restaurant_list, heading: "Search Results" });
+            })    
+            .catch(err => console.log(err));
+    }, [restaurantLocation]);
 
-    findRestaurants = (dispatch, e) => {
+    const findRestaurants = e => {
         e.preventDefault();
-        const isValid = this.validate();
-        if(isValid)
-        {
-            axios.get(`http://opentable.herokuapp.com/api/restaurants?city=${this.state.restaurantLocation}`)
-                .then(res => {
-                    dispatch({
-                        type: 'SEARCH_RESTAURANTS',
-                        payload: res.data.restaurants
-                    });
-    
-                    this.setState({ restaurantLocation: '', error: '' });
-                })
-                .catch(err => console.log(err));
-        }
-    }
-
-    validate = () => {
-        let error = '';
-
-        if(!this.state.restaurantLocation)
-        {
-            error = "Location cannot be blank";
-        }
-
-        if(error){
-            this.setState({ error });
-            return false;
-        }
-
-        return true;
+        setRestaurantLocation(userInput);
     };
-    
-    render() {
+
+    const onChange = e => {
+        setUserInput(e.target.value);
+    };
+
         return (
-            <Consumer>
-                {value => {
-                    const { dispatch } = value;
-                    return (
-                        <div className="card card-body mb-4 p-4">
-                            <h3 className="display-4 text-center">Restaurant Search</h3>
-                            <p className="lead text-center">Search for restaurants by city</p>
-                            <form onSubmit={this.findRestaurants.bind(this, dispatch)}>
-                                <div className="form-group">
-                                    <label htmlFor="search-box">City name:</label>
-                                    <input type="text" 
-                                    className="form-control form-control-lg" 
-                                    id="search-box"
-                                    placeholder="Toronto"
-                                    name="restaurantLocation"
-                                    value={this.state.restaurantLocation}
-                                    onChange={this.onChange}
-                                    />
-                                </div>
-                                <button 
-                                className="btn btn-primary btn-lg mb-3 btn-block" 
-                                type="submit"
-                                >
-                                    Get Restaurants
-                                </button>
-                            </form>
-                            <p style={{ color: "red" }}> {this.state.error} </p>
-                        </div>
-                    );
-                }}
-            </Consumer>
-        )
-    }
-}
+            <div className="card card-body mb-4 p-4">
+                <h3 className="display-4 text-center">Restaurant Search</h3>
+                <p className="lead text-center">Search for restaurants by city</p>
+                <form onSubmit={findRestaurants}>
+                    <div className="form-group">
+                        <label htmlFor="search-box">City name:</label>
+                        <input type="text" 
+                        className="form-control form-control-lg" 
+                        id="search-box"
+                        placeholder="Toronto"
+                        name="userInput"
+                        value={userInput}
+                        onChange={onChange}
+                        />
+                    </div>
+                    <button 
+                    className="btn btn-primary btn-lg mb-3 btn-block" 
+                    type="submit"
+                    >
+                        Get Restaurants
+                    </button>
+                </form>
+            </div>
+    );
+};
 
 export default Search;

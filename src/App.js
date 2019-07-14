@@ -6,14 +6,14 @@ import Header from './components/layout/Header';
 import Index from './components/layout/Index';
 import FooterBar from './components/layout/FooterBar';
 
-import { Provider } from './context';
+import { ContextController } from './context';
 
 import './App.css';
 
 class App extends Component {
   render(){
     return (
-      <Provider>
+      <ContextController>
         <Router>
           <React.Fragment>
             <NavBar/>
@@ -28,7 +28,7 @@ class App extends Component {
             <FooterBar/>
           </React.Fragment>
         </Router>
-      </Provider>
+      </ContextController>
     );
   }
 }
