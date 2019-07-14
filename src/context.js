@@ -28,7 +28,7 @@ export function ContextController({ children }) {
     useEffect(() => {
         axios
         .get(
-            `http://opentable.herokuapp.com/api/restaurants?city=toronto`)
+            `https://opentable.herokuapp.com/api/restaurants?city=toronto`)
             .then(res => {
                 setState({
                     restaurant_list: res.data.restaurants, 

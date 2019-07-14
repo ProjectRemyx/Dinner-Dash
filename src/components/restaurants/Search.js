@@ -9,7 +9,7 @@ const Search = () => {
 
     useEffect(() => {
         axios
-        .get(`http://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
+        .get(`https://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
             .then(res => {
                 let restaurant_list = res.data.restaurants;
                 setState({ restaurant_list: restaurant_list, heading: "Search Results" });
