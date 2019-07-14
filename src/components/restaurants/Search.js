@@ -6,15 +6,22 @@ const Search = () => {
     const[state, setState] = useContext(Context);
     const [userInput, setUserInput] = useState("");
     const [restaurantLocation, setRestaurantLocation] = useState("");
-
+    
     useEffect(() => {
-        axios
-        .get(`https://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
-            .then(res => {
-                let restaurant_list = res.data.restaurants;
-                setState({ restaurant_list: restaurant_list, heading: "Search Results" });
-            })    
-            .catch(err => console.log(err));
+        if(restaurantLocation === "")
+        {
+            console.log("Restaurant location cannot be blank");
+        }
+        else
+        {
+            axios
+            .get(`https://opentable.herokuapp.com/api/restaurants?city=${restaurantLocation}`)
+                .then(res => {
+                    let restaurant_list = res.data.restaurants;
+                    setState({ restaurant_list: restaurant_list, heading: "Search Results" });
+                })    
+                .catch(err => console.log(err));
+        }
     }, [restaurantLocation]);
 
     const findRestaurants = e => {
@@ -25,7 +32,6 @@ const Search = () => {
     const onChange = e => {
         setUserInput(e.target.value);
     };
-
         return (
             <div className="card card-body mb-4 p-4">
                 <h3 className="display-4 text-center">Restaurant Search</h3>
@@ -45,6 +51,7 @@ const Search = () => {
                     <button 
                     className="btn btn-primary btn-lg mb-3 btn-block" 
                     type="submit"
+                    disabled={!userInput}
                     >
                         Get Restaurants
                     </button>
