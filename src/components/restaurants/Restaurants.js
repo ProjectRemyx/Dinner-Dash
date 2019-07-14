@@ -7,8 +7,16 @@ const Restaurants = () => {
     const [state] = useContext(Context);
     const { restaurant_list, heading } = state;
 
-    if(restaurant_list === undefined || restaurant_list.legnth === 0){
+    if(restaurant_list === undefined){
         return <Loading/>;
+    }
+    else if(restaurant_list.length === 0)
+    {
+        return(
+            <React.Fragment>
+                <h4 className="text-center">No restaurants found :(</h4>
+            </React.Fragment>
+        );
     }
     else{
         return(
