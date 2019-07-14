@@ -57,9 +57,11 @@ class Search extends Component {
                             <p className="lead text-center">Search for restaurants by city</p>
                             <form onSubmit={this.findRestaurants.bind(this, dispatch)}>
                                 <div className="form-group">
+                                    <label htmlFor="search-box">City name:</label>
                                     <input type="text" 
                                     className="form-control form-control-lg" 
-                                    placeholder="City name..."
+                                    id="search-box"
+                                    placeholder="Toronto"
                                     name="restaurantLocation"
                                     value={this.state.restaurantLocation}
                                     onChange={this.onChange}

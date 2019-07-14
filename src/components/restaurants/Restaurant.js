@@ -6,7 +6,7 @@ const Restaurant = (props) => {
     return (
         <div className="col-md-3">
             <div className="card mb-4 shadow-sm">
-                <div className="card-header text-center">Price Rating - {restaurant.price}</div>
+                <div className="card-header text-center">Price Rating - {restaurant.price}/5</div>
                 <img className="card-img-top" src={restaurant.image_url} alt="Restaurant"/>
                 <div className="card-body">
                     <h5 className="card-title">{restaurant.name}</h5>

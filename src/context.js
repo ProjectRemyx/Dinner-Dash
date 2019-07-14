@@ -26,7 +26,6 @@ export class Provider extends Component {
     componentDidMount(){
         axios.get(`http://opentable.herokuapp.com/api/restaurants?city=toronto`)
             .then(res => {
-                // console.log(res.data);
                 this.setState({restaurant_list: res.data.restaurants});
             })
             .catch(err => console.log(err));
